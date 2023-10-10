@@ -7,12 +7,16 @@ public class RestCalculation {
         int money = 0; // количество денег на счету
 
 
-        for (int month = 0; month < 12; month++) {
-            if (money >= threshold) { // можем ли отдыхать?
-                count++; // увеличиваем счётчик месяцев отдыха
-                money = money - threshold;
+        for (int i = 0; i < 12; i++) {
+            if (money >= threshold) {
+                money -= expenses;
+                money /= 3;
+
+                count++;
+
             } else {
-                money = money + income - expenses;
+                money += income;
+                money -= expenses;
             }
         }
         return count;
